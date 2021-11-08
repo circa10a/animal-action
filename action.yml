@@ -1,0 +1,17 @@
+name: 'animals'
+description: 'Add a cute animal picture to your pull requests'
+inputs:
+  github_token:
+    description: A GitHub token
+    required: true
+  animals:
+    description: 'What kinds of animal pictures to comment with on pull requests'
+    required: false
+    default: 'cats,dogs,foxes'
+  pull_request_comment:
+    description: 'Comment to post along with animal picture'
+    required: false
+    default: 'Thank you for your contribution. While we review, please enjoy this cute animal picture :cat:'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

@@ -1,8 +1,7 @@
 # animal-action
 
-[![actions-workflow-test][actions-workflow-test-badge]][actions-workflow-test]
-[![release][release-badge]][release]
-[![license][license-badge]][license]
+![Build Status](https://github.com/circa10a/animal-action/workflows/tag/badge.svg)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/circa10a/animal-action?style=plastic)
 
 A github action to add smiles to pull requests
 

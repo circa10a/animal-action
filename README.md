@@ -27,12 +27,12 @@ None
 ## Example usage
 
 ```yaml
-name: test
+name: comment
 on: [
   pull_request
 ]
 jobs:
-  test:
+  comment:
     runs-on: ubuntu-latest
     steps:
       - uses: circa10a/animal-action@v0.1.0

@@ -8541,7 +8541,7 @@ const main = async() => {
     const pullRequestComment = core.getInput('pull_request_comment');
 
     // Get random animal from input (comma delimited string)
-    const randomAnimal = randomItemFromArray(Object.keys(animals));
+    const randomAnimal = randomItemFromArray(Object.values(animals));
     // If not in config map, not supported, bail early
     if (!animalAPIConfigs[randomAnimal]) {
       console.error(`Animal: ${randomAnimal} not supported. Skipping.`);

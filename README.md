@@ -1,5 +1,9 @@
 # animal-action
 
+[![actions-workflow-test][actions-workflow-test-badge]][actions-workflow-test]
+[![release][release-badge]][release]
+[![license][license-badge]][license]
+
 A github action to add smiles to pull requests
 
 ## Inputs
@@ -27,10 +31,10 @@ None
 ## Example usage
 
 ```yaml
-name: test
-on: [
-  pull_request
-]
+name: comment
+on:
+  pull_request:
+    types: [opened]
 jobs:
   test:
     runs-on: ubuntu-latest

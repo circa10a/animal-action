@@ -6,6 +6,6 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - uses: circa10a/animal-action@v0.1.0
+      - uses: circa10a/animal-action@v1.0.0
         with:
           github_token: ${{ secrets.github_token }}

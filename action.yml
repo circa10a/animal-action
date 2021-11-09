@@ -1,4 +1,4 @@
-name: 'animals'
+name: 'animal-action'
 description: 'Add a cute animal picture to your pull requests'
 inputs:
   github_token:

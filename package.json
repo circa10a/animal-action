@@ -25,5 +25,11 @@
   },
   "devDependencies": {
     "eslint": "^8.2.0"
-  }
+  },
+  "release": {
+    "branches": [
+      "main"
+      ]
+  },
+  "private": true
 }

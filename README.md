@@ -17,7 +17,7 @@ A github action to add smiles to pull requests
 
 A comma-delimated string of types of animals pictures to comment with.
 
-Default:`"cats,dogs,foxes"`.
+Default: `"cats,dogs,foxes"`.
 
 ## `pull_request_comment`
 

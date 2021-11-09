@@ -23,7 +23,7 @@ Default: `"cats,dogs,foxes"`.
 
 Comment to post along with animal picture.
 
-Default:`"Thank you for your contribution. While we review, please enjoy this cute animal picture :cat:"`.
+Default: `':tada: Thank you for your contribution! While we review, please enjoy this cute animal picture'`.
 
 ## Outputs
 

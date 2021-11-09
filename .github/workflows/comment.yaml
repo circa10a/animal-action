@@ -8,4 +8,4 @@ jobs:
     steps:
       - uses: circa10a/animal-action@v0.1.0
         with:
-          github_token: ${{ secrets.github_token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}

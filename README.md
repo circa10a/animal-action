@@ -5,6 +5,8 @@
 
 A github action to add smiles to pull requests
 
+![alt text]()
+
 ## Inputs
 
 ## `github_token`

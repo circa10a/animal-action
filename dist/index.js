@@ -8510,7 +8510,6 @@ const animalAPIConfigs = {
   cats: {
     randomImageEndpoint: 'https://api.thecatapi.com/v1/images/search',
     emoji: ':cat2:',
-    singluarName: 'cat',
     jsonParserFunc: function(json) {
       return json[0].url;
     }
@@ -8518,15 +8517,13 @@ const animalAPIConfigs = {
   dogs: {
     randomImageEndpoint: 'https://dog.ceo/api/breeds/image/random',
     emoji: ':dog2:',
-    singluarName: 'dog',
     jsonParserFunc: function(json) {
       return json.message;
     }
   },
   foxes: {
-    randomImageEndpoint: 'https://randomfox.ca/floof',
-    emoji: 'fox_face',
-    singluarName: 'fox',
+    randomImageEndpoint: 'https://randomfox.ca/floof/',
+    emoji: ':fox_face:',
     jsonParserFunc: function(json) {
       return json.image;
     }
@@ -8539,6 +8536,15 @@ const main = async() => {
     const githubToken = core.getInput('github_token', { required: true });
     const animals = core.getInput('animals').split(',');
     const pullRequestComment = core.getInput('pull_request_comment');
+
+    // Get repo details
+    const octokit = github.getOctokit(githubToken);
+    const context = github.context;
+
+    if (!context.payload.pull_request) {
+      console.error('Not a pull request');
+      return;
+    }
 
     // Get random animal from input (comma delimited string)
     const randomAnimal = randomItemFromArray(Object.values(animals));
@@ -8561,25 +8567,15 @@ const main = async() => {
     // Parse JSON
     const responseJSON = await response.json();
     const randomAnimalImageLink = randomAnimalConfig.jsonParserFunc(responseJSON);
+
     // Create comment to go in PR
-    const body = `${pullRequestComment} ${randomAnimal.emoji}\n\n![alt text](${randomAnimalImageLink})`;
-
-    // Get repo details
-    const octokit = github.getOctokit(githubToken);
-    let { owner, repo } = github.context.repo;
-    if (core.getInput('repo')) {
-      [owner, repo] = core.getInput('repo').split('/');
-    }
-
-    // The number of the issue or pull request.
-    const number = core.getInput('number') === '' ? github.context.issue.number: parseInt(core.getInput('number'));
-
-    await octokit.issues.createComment({
-      owner,
-      repo,
-      issue_number: number,
-      body
+    const msg = `${pullRequestComment} ${randomAnimalConfig.emoji}\n\n![alt text](${randomAnimalImageLink})`;
+    const resp = await octokit.rest.issues.createComment({
+      ...context.repo,
+      issue_number: context.issue.number,
+      body: msg,
     });
+    console.log(resp);
   } catch (error) {
     console.error(error.message);
   }

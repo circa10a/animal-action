@@ -5,6 +5,8 @@
 
 A github action to add smiles to pull requests
 
+test
+
 ## Inputs
 
 ## `github_token`
@@ -40,7 +42,7 @@ jobs:
     steps:
       - uses: circa10a/animal-action@v0.1.0
         with:
-          github_token: ${{ secrets.github_token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           animals: 'cats,dogs' # cats,dogs,foxes currently supported
           pull_request_comment: 'Thank you for the contribution! Here's a cute animal picture to say thank you!'
 ```

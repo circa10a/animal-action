@@ -11,7 +11,7 @@ inputs:
   pull_request_comment:
     description: 'Comment to post along with animal picture'
     required: false
-    default: 'Thank you for your contribution. While we review, please enjoy this cute animal picture :cat:'
+    default: ':tada: Thank you for your contribution! While we review, please enjoy this cute animal picture'
 runs:
   using: 'node12'
   main: 'dist/index.js'

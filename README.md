@@ -5,7 +5,7 @@
 
 A github action to add smiles to pull requests
 
-test
+![alt text](docs/img/example.png)
 
 ## Inputs
 

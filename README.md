@@ -40,7 +40,7 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - uses: circa10a/animal-action@v1.0.0
+      - uses: circa10a/animal-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           animals: 'cats,dogs' # cats,dogs,foxes currently supported

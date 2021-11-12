@@ -17,7 +17,7 @@ A github action to add smiles to pull requests
 
 A comma-delimated string of types of animals pictures to comment with.
 
-Default: `"cats,dogs,foxes"`.
+Default: `"cats,dogs,foxes,koalas,pandas,birds,raccoons,kangaroos,shibas"`.
 
 ## `pull_request_comment`
 
@@ -43,6 +43,6 @@ jobs:
       - uses: circa10a/animal-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          animals: 'cats,dogs' # cats,dogs,foxes currently supported
+          animals: 'cats,dogs'
           pull_request_comment: ':tada: Thank you for the contribution! Here's a cute animal picture to say thank you!'
 ```

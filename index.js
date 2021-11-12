@@ -4,28 +4,59 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 const randomItemFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
+const someRandomAPIBaseURL = 'https://some-random-api.ml/animal';
+const someRandomAPIJSONImageParserFunction =  function(json) {
+  return json.image;
+};
+
 const animalAPIConfigs = {
   cats: {
-    randomImageEndpoint: 'https://api.thecatapi.com/v1/images/search',
+    randomImageEndpoint: `${someRandomAPIBaseURL}/cat`,
     emoji: ':cat2:',
-    jsonParserFunc: function(json) {
-      return json[0].url;
-    }
+    jsonParserFunc: someRandomAPIJSONImageParserFunction
   },
   dogs: {
-    randomImageEndpoint: 'https://dog.ceo/api/breeds/image/random',
+    randomImageEndpoint: `${someRandomAPIBaseURL}/dog`,
     emoji: ':dog2:',
-    jsonParserFunc: function(json) {
-      return json.message;
-    }
+    jsonParserFunc: someRandomAPIJSONImageParserFunction
   },
   foxes: {
-    randomImageEndpoint: 'https://randomfox.ca/floof/',
+    randomImageEndpoint: `${someRandomAPIBaseURL}/fox`,
     emoji: ':fox_face:',
+    jsonParserFunc: someRandomAPIJSONImageParserFunction
+  },
+  koalas: {
+    randomImageEndpoint: `${someRandomAPIBaseURL}/koala`,
+    emoji: ':koala:',
+    jsonParserFunc: someRandomAPIJSONImageParserFunction
+  },
+  pandas: {
+    randomImageEndpoint: `${someRandomAPIBaseURL}/panda`,
+    emoji: ':panda_face:',
+    jsonParserFunc: someRandomAPIJSONImageParserFunction
+  },
+  birds: {
+    randomImageEndpoint: `${someRandomAPIBaseURL}/bird`,
+    emoji: ':bird:',
+    jsonParserFunc: someRandomAPIJSONImageParserFunction
+  },
+  raccoons: {
+    randomImageEndpoint: `${someRandomAPIBaseURL}/raccoon`,
+    emoji: ':raccoon:',
+    jsonParserFunc: someRandomAPIJSONImageParserFunction
+  },
+  kangaroos: {
+    randomImageEndpoint: `${someRandomAPIBaseURL}/kangaroo`,
+    emoji: ':kangaroo:',
+    jsonParserFunc: someRandomAPIJSONImageParserFunction
+  },
+  shibas: {
+    randomImageEndpoint: 'http://shibe.online/api/shibes',
+    emoji: ':dog2:',
     jsonParserFunc: function(json) {
-      return json.image;
+      return json[0];
     }
-  }
+  },
 };
 
 const main = async() => {

@@ -7,7 +7,7 @@ inputs:
   animals:
     description: 'What kinds of animal pictures to comment with on pull requests'
     required: false
-    default: 'cats,dogs,foxes,koalas,pandas,birds,raccoons,kangaroos,shibas'
+    default: 'cats,dogs,foxes'
   pull_request_comment:
     description: 'Comment to post along with animal picture'
     required: false

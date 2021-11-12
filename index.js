@@ -4,59 +4,28 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 const randomItemFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-const someRandomAPIBaseURL = 'https://some-random-api.ml/animal';
-const someRandomAPIJSONImageParserFunction =  function(json) {
-  return json.image;
-};
-
 const animalAPIConfigs = {
   cats: {
-    randomImageEndpoint: `${someRandomAPIBaseURL}/cat`,
+    randomImageEndpoint: 'https://api.thecatapi.com/v1/images/search',
     emoji: ':cat2:',
-    jsonParserFunc: someRandomAPIJSONImageParserFunction
-  },
-  dogs: {
-    randomImageEndpoint: `${someRandomAPIBaseURL}/dog`,
-    emoji: ':dog2:',
-    jsonParserFunc: someRandomAPIJSONImageParserFunction
-  },
-  foxes: {
-    randomImageEndpoint: `${someRandomAPIBaseURL}/fox`,
-    emoji: ':fox_face:',
-    jsonParserFunc: someRandomAPIJSONImageParserFunction
-  },
-  koalas: {
-    randomImageEndpoint: `${someRandomAPIBaseURL}/koala`,
-    emoji: ':koala:',
-    jsonParserFunc: someRandomAPIJSONImageParserFunction
-  },
-  pandas: {
-    randomImageEndpoint: `${someRandomAPIBaseURL}/panda`,
-    emoji: ':panda_face:',
-    jsonParserFunc: someRandomAPIJSONImageParserFunction
-  },
-  birds: {
-    randomImageEndpoint: `${someRandomAPIBaseURL}/bird`,
-    emoji: ':bird:',
-    jsonParserFunc: someRandomAPIJSONImageParserFunction
-  },
-  raccoons: {
-    randomImageEndpoint: `${someRandomAPIBaseURL}/raccoon`,
-    emoji: ':raccoon:',
-    jsonParserFunc: someRandomAPIJSONImageParserFunction
-  },
-  kangaroos: {
-    randomImageEndpoint: `${someRandomAPIBaseURL}/kangaroo`,
-    emoji: ':kangaroo:',
-    jsonParserFunc: someRandomAPIJSONImageParserFunction
-  },
-  shibas: {
-    randomImageEndpoint: 'http://shibe.online/api/shibes',
-    emoji: ':dog2:',
     jsonParserFunc: function(json) {
-      return json[0];
+      return json[0].url;
     }
   },
+  dogs: {
+    randomImageEndpoint: 'https://dog.ceo/api/breeds/image/random',
+    emoji: ':dog2:',
+    jsonParserFunc: function(json) {
+      return json.message;
+    }
+  },
+  foxes: {
+    randomImageEndpoint: 'https://randomfox.ca/floof/',
+    emoji: ':fox_face:',
+    jsonParserFunc: function(json) {
+      return json.image;
+    }
+  }
 };
 
 const main = async() => {
@@ -78,7 +47,8 @@ const main = async() => {
     // Get random animal from input (comma delimited string)
     const randomAnimal = randomItemFromArray(Object.values(animals));
     // Log which animal
-    console.log(`Fetching picture of a ${randomAnimal}`);
+    console.log(`Fetching image for ${randomAnimal}`);
+
     // If not in config map, not supported, bail early
     if (!animalAPIConfigs[randomAnimal]) {
       console.error(`Animal: ${randomAnimal} not supported. Skipping.`);
